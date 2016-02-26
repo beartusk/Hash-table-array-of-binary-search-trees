@@ -3,30 +3,39 @@
 // Authors: Jason Armstrong, Anthony Fopp, Kenneth Beartusk
 // Instructor: Dr. Qing Yang
 //
-public class hashTable { // demonstrates hash tables using separate chaining of binary trees
-  public Tree[] treeArray;
-  
+public class HashTable { // demonstrates hash tables using separate chaining of binary trees
+	private Tree[] treeArray;
+	private int size;
+	
 	// -------------------------------------------------------------
-  public hashTable() { // constructor
-  
-  } 
-  //-------------------------------------------------------------
+	public HashTable(int sizeIn) { // constructor
+		size = sizeIn;
+		treeArray = new Tree[size];
+	}
+	//-------------------------------------------------------------
 
-  public void insert() {
-	// this is a test to see what happens when you just save a file without any other steps
-  } // end method: insert
+	public void show() {
+		for (int i = 0; i < size; i++) {
+			System.out.println(i+". ");
+			treeArray[i].displayTree();
+		}
+	} // end method: insert
 
-  public void search() {
-  
-  } // end method: search
+	public void insert(int value) {
+		int index = value % treeArray.length;
+		treeArray[index].insert(value);
+	} // end method: insert
 
-  public void display() {
-  
-  } // end method: display
+	public boolean find(int value) {
+		int index = value % treeArray.length;
+		if (treeArray[index].find(value) == null) {
+			return false;
+		} else return true;
+	} // end method: search
 
-  public void delete() { // for extra credit, if there is time (although it's a point to FINAL grade!
+	public void delete(int value) { // for extra credit, if there is time (although it's a point to FINAL grade!
   
-  } // end method: display
+	} // end method: delete
   
 } // end class hashTable
 

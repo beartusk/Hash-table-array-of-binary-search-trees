@@ -6,12 +6,12 @@
 
 import java.util.*; // for Stack class
 
-class Tree { // demonstrates binary tree
+class Tree { // demonstrates binary search tree
 	public Node root; // first node of tree
 	
 	// -------------------------------------------------------------
-	public Tree() // constructor
-	{ root = null; } // no nodes in tree yet
+	public Tree() {// constructor
+		root = null; } // no nodes in tree yet
 	//-------------------------------------------------------------
 	public Node find(int key) { // find node with given key
 	// (assumes non-empty tree)
@@ -28,10 +28,9 @@ class Tree { // demonstrates binary tree
 		return current; // found it
 	} // end find()
 
-	public void insert(int id, char dd) {
+	public void insert(int id) {
 		Node newNode = new Node(); // make new node
 		newNode.iData = id; // insert data
-		newNode.dData = dd;
 		if(root==null) // no node in root
 			root = newNode;
 		else // root occupied
@@ -143,8 +142,7 @@ class Tree { // demonstrates binary tree
 
 	// returns node with next-highest value after delNode
 	// goes to right child, then right child's left descendants
-	private Node getSuccessor(Node delNode)
-	{
+	private Node getSuccessor(Node delNode) {
 		Node successorParent = delNode;
 		Node successor = delNode;
 		Node current = delNode.rightChild; // go to right child
@@ -163,8 +161,7 @@ class Tree { // demonstrates binary tree
 		return successor;
 	}
 
-	public void traverse(int traverseType)
-	{
+	public void traverse(int traverseType) {
 		switch(traverseType)
 		{
 		case 1: System.out.print("\nPreorder traversal: ");
@@ -180,8 +177,7 @@ class Tree { // demonstrates binary tree
 		System.out.println();
 	}
 
-	private void preOrder(Node localRoot)
-	{
+	private void preOrder(Node localRoot) {
 		if(localRoot != null)
 		{
 			System.out.print(localRoot.iData + " ");
@@ -190,8 +186,7 @@ class Tree { // demonstrates binary tree
 		}
 	}
 
-	private void inOrder(Node localRoot)
-	{
+	private void inOrder(Node localRoot) {
 		if(localRoot != null)
 		{
 			inOrder(localRoot.leftChild);
@@ -200,8 +195,7 @@ class Tree { // demonstrates binary tree
 		}
 	}
 
-	private void postOrder(Node localRoot)
-	{
+	private void postOrder(Node localRoot) {
 		if(localRoot != null)
 		{
 			postOrder(localRoot.leftChild);
@@ -211,7 +205,6 @@ class Tree { // demonstrates binary tree
 	}
 
 	public void displayTree() {
-		char character = '&';
 		Stack<Node> globalStack = new Stack<Node>();
 		globalStack.push(root);
 		int nBlanks = 32;
@@ -226,12 +219,6 @@ class Tree { // demonstrates binary tree
 			while(globalStack.isEmpty()==false) {
 				Node temp = (Node)globalStack.pop();
 				if(temp != null) {
-					if (temp.dData == ' ') {
-						character = '[';
-					} else if (temp.dData == '\n') {
-						character = '\\';
-					} else character = temp.dData;
-					System.out.print(character);					
 					System.out.print(temp.iData);
 					localStack.push(temp.leftChild);
 					localStack.push(temp.rightChild);
@@ -261,13 +248,11 @@ class Tree { // demonstrates binary tree
 		System.out.print("Press the enter key to continue");
 		pressEnter = new Scanner(System.in);
 		pressEnter.nextLine();
+		pressEnter.close();
 	} // end method enterToContinue
 	
 	public int getFrequency() {
 		return root.iData;
 	}
 	
-	public char getLetter() {
-		return root.dData;
-	}
 } // end class Tree

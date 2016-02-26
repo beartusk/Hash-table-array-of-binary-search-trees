@@ -10,17 +10,6 @@ class TreeApp {
 	public void main () throws IOException { //main(String[] args) throws IOException
 		int value;
 		Tree theTree = new Tree();
-		theTree.insert(50, 'a');
-		theTree.insert(25, 'b');
-		theTree.insert(75, 'c');
-		theTree.insert(12, 'd');
-		theTree.insert(37, 'e');
-		theTree.insert(43, 'f');
-		theTree.insert(30, 'g');
-		theTree.insert(33, 'h');
-		theTree.insert(87, 'i');
-		theTree.insert(93, 'j');
-		theTree.insert(97, 'k');
 		while(true) {
 			System.out.println("Enter a command from below using the first letter. ");
 			System.out.print("[i]nsert, [f]ind, [d]elete, or [t]raverse: ");
@@ -32,7 +21,7 @@ class TreeApp {
 			case 'i': // Insert
 				System.out.print("Enter value to insert: ");
 				value = getInt();
-				theTree.insert(value, 'a');
+				theTree.insert(value);
 				break;
 			case 'f': // Find
 				System.out.print("Enter value to find: ");
