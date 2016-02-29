@@ -7,7 +7,7 @@
 import java.io.*; // for reader and other io classes
 
 public class HashTableApp { // demonstrates hash tables using separate chaining of binary trees
-	public static void main () throws IOException { //main(String[] args) throws IOException
+	public static void main(String[] args) throws IOException {
 	
 		int[] longTestArray = {99, 1, 25, 4, 48, 52, 62, 55, 53, 91, 44, 12, 92, 88, 19, 68, 21, 
 				9, 31, 64, 8, 61, 73, 42, 6, 38, 23, 84, 58, 5, 89, 85, 93, 45, 11, 97, 18, 14, 
@@ -34,9 +34,13 @@ public class HashTableApp { // demonstrates hash tables using separate chaining 
 		
 		while(true) {
 			System.out.print("Enter size of hash table (1-100): ");
-			int size = getChar();
-			HashTable hashT = new HashTable(size);			
+			int size = Integer.parseInt(getString());
+			System.out.println("Size="+size); //debugging output
+			HashTable hashT = new HashTable(size);	
+			hashT.show(); // debugging output
+			
 			for (int i=0; i < size; i++) {
+				System.out.println("For loop, i=" + i + ", longTestArray=" + longTestArray[i]); // debugging output
 				hashT.insert(longTestArray[i]);
 			}
 			
@@ -71,7 +75,7 @@ public class HashTableApp { // demonstrates hash tables using separate chaining 
 		} // end while
 	} // end main()
 	
-	public String getString() throws IOException
+	public static String getString() throws IOException
 	{
 		InputStreamReader isr = new InputStreamReader(System.in);
 		BufferedReader br = new BufferedReader(isr);
@@ -79,12 +83,12 @@ public class HashTableApp { // demonstrates hash tables using separate chaining 
 		return s;
 	}
 
-	public char getChar() throws IOException {
+	public static char getChar() throws IOException {
 		String s = getString();
 		return s.charAt(0);
 	}
 
-	public int getInt() throws IOException {
+	public static int getInt() throws IOException {
 		String s = getString();
 		return Integer.parseInt(s);
 	}

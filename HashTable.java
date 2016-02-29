@@ -22,8 +22,11 @@ public class HashTable { // demonstrates hash tables using separate chaining of 
 	} // end method: insert
 
 	public void insert(int value) {
+		System.out.println("inserting: value="+value+", treeArray.length="+treeArray.length+", value % treeArray.length="+(value % treeArray.length)); // debugging output
 		int index = value % treeArray.length;
+		System.out.println("remainder checks out"); // debugging output
 		treeArray[index].insert(value);
+		System.out.println("insert function passed"); // debugging output		
 	} // end method: insert
 
 	public boolean find(int value) {
